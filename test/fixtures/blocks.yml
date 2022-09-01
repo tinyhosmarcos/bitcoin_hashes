@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hash_id: MyString
+  prev_block: MyString
+  block_index: 1
+  time: 1
+  bits: 1
+
+two:
+  hash_id: MyString
+  prev_block: MyString
+  block_index: 1
+  time: 1
+  bits: 1
