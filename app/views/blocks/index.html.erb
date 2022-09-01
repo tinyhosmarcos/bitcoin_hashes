@@ -2,6 +2,19 @@
 
 <h1>Blocks</h1>
 
+<div>
+  <form data-controller="block">
+    <div>
+      <label for="hash">Hash</label>
+      <input type="text" data-block-target="hash" id="hash">
+    </div>
+    <div>
+      <button data-action="click->block#submit">test</button>
+    </div>
+  </form>
+</div>
+
+
 <div id="blocks">
   <% @blocks.each do |block| %>
     <%= render block %>
