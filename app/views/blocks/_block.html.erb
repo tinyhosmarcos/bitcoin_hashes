@@ -1,27 +1,31 @@
-<div id="<%= dom_id block %>">
-  <p>
-    <strong>Hash:</strong>
-    <%= block.hash_id %>
-  </p>
+<div data-controller="block" id="<%= dom_id block %>">
+  <div>
+    <p>
+      <strong>Hash:</strong>
+      <%= block.hash_id %>
+    </p>
 
-  <p>
-    <strong>Prev block:</strong>
-    <%= block.prev_block %>
-  </p>
+    <p>
+      <strong>Prev block:</strong>
+      <%= block.prev_block %>
+    </p>
 
-  <p>
-    <strong>Block index:</strong>
-    <%= block.block_index %>
-  </p>
+    <p>
+      <strong>Block index:</strong>
+      <%= block.block_index %>
+    </p>
 
-  <p>
-    <strong>Time:</strong>
-    <%= block.time %>
-  </p>
+    <p>
+      <strong>Time:</strong>
+      <%= block.time %>
+    </p>
 
-  <p>
-    <strong>Bits:</strong>
-    <%= block.bits %>
-  </p>
-
+    <p>
+      <strong>Bits:</strong>
+      <%= block.bits %>
+    </p>
+  </div>
+  <div>
+    <a href="/blocks/<%= block.id %>" data-turbo-method="delete">DELETE</a>
+  </div>
 </div>

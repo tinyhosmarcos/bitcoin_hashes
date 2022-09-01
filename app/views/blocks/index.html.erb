@@ -5,23 +5,14 @@
 <div>
   <form data-controller="block">
     <div>
-      <label for="hash">Hash</label>
-      <input type="text" data-block-target="hash" id="hash">
-    </div>
-    <div>
-      <button data-action="click->block#submit">test</button>
+      <input type="text" data-block-target="hash" id="hash", placeholder="bitcoin hash">
+
+      <button data-action="click->block#submit">ADD</button>
     </div>
   </form>
 </div>
 
 
-<div id="blocks">
-  <% @blocks.each do |block| %>
-    <%= render block %>
-    <p>
-      <%= link_to "Show this block", block %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New block", new_block_path %>
+<%= turbo_frame_tag "blocks_frame" do %>
+  <%= render @blocks %>
+<% end %>
