@@ -1,5 +1,5 @@
 
-export default async function apiFetch(base_url, endpoint , { method, headers, body } = {} ){
+export default async function apiFetch(base_url, endpoint , turbo, { method, headers, body } = {} ){
 
   if(body) {
     headers = {
@@ -15,8 +15,11 @@ export default async function apiFetch(base_url, endpoint , { method, headers, b
   };
 
   const response = await fetch(`${base_url}/${endpoint}`, config);
-
   let data;
+  if (turbo) {
+    data = await response.text();
+    return  data;
+  }
   if (!response.ok) {
     try {
       data = await response.json();
