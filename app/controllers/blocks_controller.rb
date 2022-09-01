@@ -3,7 +3,7 @@ class BlocksController < ApplicationController
 
   # GET /blocks or /blocks.json
   def index
-    @blocks = Block.all
+    @blocks = Block.all.order("created_at DESC")
   end
 
   # GET /blocks/1 or /blocks/1.json
@@ -25,8 +25,9 @@ class BlocksController < ApplicationController
 
     respond_to do |format|
       if @block.save
-        format.html { redirect_to block_url(@block), notice: "Block was successfully created." }
-        format.json { render :show, status: :created, location: @block }
+        format.turbo_stream { render partial: "blocks/create", locals: { block: @block } }
+        format.html {  }
+        #format.json { render :show, status: :created, location: @block }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @block.errors, status: :unprocessable_entity }
@@ -52,6 +53,7 @@ class BlocksController < ApplicationController
     @block.destroy
 
     respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.remove(@block) }
       format.html { redirect_to blocks_url, notice: "Block was successfully destroyed." }
       format.json { head :no_content }
     end
