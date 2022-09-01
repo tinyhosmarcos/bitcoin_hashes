@@ -15,4 +15,5 @@
 
 <%= turbo_frame_tag "blocks_frame" do %>
   <%= render @blocks %>
+  <%== pagy_nav(@pagy, link_extra: "data-turbo-action='advance'") %>
 <% end %>
