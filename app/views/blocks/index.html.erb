@@ -5,7 +5,7 @@
 <div>
   <form data-controller="block">
     <div>
-      <input type="text" data-block-target="hash" id="hash", placeholder="bitcoin hash">
+      <input data-action="input->block#input" type="text" data-block-target="hash" id="hash", placeholder="bitcoin hash">
 
       <button data-action="click->block#submit">ADD</button>
     </div>

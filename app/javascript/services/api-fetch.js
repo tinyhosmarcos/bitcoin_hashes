@@ -15,25 +15,19 @@ export default async function apiFetch(base_url, endpoint , turbo, { method, hea
   };
 
   const response = await fetch(`${base_url}/${endpoint}`, config);
+  
   let data;
-  if (turbo) {
-    data = await response.text();
-    return  data;
-  }
   if (!response.ok) {
-    try {
-      data = await response.json();
-    } catch (error) {
-      throw new Error(response.statusText);
-    }
-    throw new Error(data.errors);
+    console.log("Error Response");
+    data = response.status;
+    return data;
   }
-
-  try {
+  if (!turbo) {
+    console.log("JSON Response");
     data = await response.json();
-  } catch (error) {
-    data = response.statusText;
+    return data;
   }
-
+  console.log("Turbo Stream Response");
+  data = await response.text();  
   return data;
 }
